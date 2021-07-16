@@ -62,6 +62,11 @@ impl Sender {
 		self.out.close(code)?;
 		Ok(())
 	}
+
+	pub(crate) fn check_liveness(&self) -> error::Result<()> {
+		self.out.timeout(100, self.out.token())?;
+		Ok(())
+	}
 }
 
 /// Request context
