@@ -299,6 +299,7 @@ where
 
 	fn on_error(&mut self, error: ws::Error) {
 		error!("websocket error: {}", error);
+		println!("websocket error: {}", error);
 		let _ = self.context.out.check_liveness();
 	}
 }
